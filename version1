@@ -1,0 +1,163 @@
+import java.util.Scanner;
+
+public class TrabajoParcial {
+    public static void main(String[] args) {
+        int[] area = {1,2,3};
+        int[] personal = {1,2,3,4};
+        String[][][] usuarios = new String[3][4][3];
+        String[][][] contraseña = new String[3][4][3];
+
+        usuarios[0][0][0] = "jorge";
+        usuarios[0][0][1] = "luis";
+        usuarios[0][0][2] = "pedro";
+
+        contraseña[0][0][0] = "12345";
+        contraseña[0][0][1] = "123";
+        contraseña[0][0][2] = "1234";
+
+        usuarios[0][1][0] = "pedro";
+        usuarios[0][1][1] = "carlos";
+        usuarios[0][1][2] = "wilson";
+
+        contraseña[0][1][0] = "12345";
+        contraseña[0][1][1] = "123";
+        contraseña[0][1][2] = "1234";
+
+        usuarios[0][2][0] = "joao";
+        usuarios[0][2][1] = "gianfranco";
+        usuarios[0][2][2] = "alejandro";
+
+        contraseña[0][2][0] = "12345";
+        contraseña[0][2][1] = "123";
+        contraseña[0][2][2] = "1234";
+
+        usuarios[0][3][0] = "renato";
+        usuarios[0][3][1] = "irven";
+        usuarios[0][3][2] = "washington";
+
+        contraseña[0][3][0] = "12345";
+        contraseña[0][3][1] = "123";
+        contraseña[0][3][2] = "1234";
+
+
+        usuarios[1][0][0] = "brener";
+        usuarios[1][0][1] = "ignacio";
+        usuarios[1][0][2] = "rafael";
+
+        contraseña[1][0][0] = "12345";
+        contraseña[1][0][1] = "123";
+        contraseña[1][0][2] = "1234";
+
+        usuarios[1][1][0] = "jorge";
+        usuarios[1][1][1] = "amilton";
+        usuarios[1][1][2] = "renzo";
+
+        contraseña[1][1][0] = "12345";
+        contraseña[1][1][1] = "123";
+        contraseña[1][1][2] = "1234";
+
+        usuarios[1][2][0] = "luis";
+        usuarios[1][2][1] = "alberto";
+        usuarios[1][2][2] = "julino";
+
+        contraseña[1][2][0] = "12345";
+        contraseña[1][2][1] = "123";
+        contraseña[1][2][2] = "1234";
+
+        usuarios[1][3][0] = "carlos";
+        usuarios[1][3][1] = "kevin";
+        usuarios[1][3][2] = "yoshimar";
+
+        contraseña[1][3][0] = "12345";
+        contraseña[1][3][1] = "123";
+        contraseña[1][3][2] = "1234";
+
+
+        usuarios[2][0][0] = "jose";
+        usuarios[2][0][1] = "arom";
+        usuarios[2][0][2] = "roy";
+
+        contraseña[2][0][0] = "12345";
+        contraseña[2][0][1] = "123";
+        contraseña[2][0][2] = "1234";
+
+        usuarios[2][1][0] = "miguel";
+        usuarios[2][1][1] = "angel";
+        usuarios[2][1][2] = "franco";
+
+        contraseña[2][1][0] = "12345";
+        contraseña[2][1][1] = "123";
+        contraseña[2][1][2] = "1234";
+
+        usuarios[2][2][0] = "bryan";
+        usuarios[2][2][1] = "tony";
+        usuarios[2][2][2] = "erick";
+
+        contraseña[2][2][0] = "12345";
+        contraseña[2][2][1] = "123";
+        contraseña[2][2][2] = "1234";
+
+        usuarios[2][3][0] = "lorenzo";
+        usuarios[2][3][1] = "jesus";
+        usuarios[2][3][2] = "alfonso";
+
+        contraseña[2][3][0] = "12345";
+        contraseña[2][3][1] = "123";
+        contraseña[2][3][2] = "1234";
+
+        Scanner scan=new Scanner(System.in);
+        System.out.println("INGRESAR NUMERO DE AREA DE INGRESO: ");
+        System.out.println("1.NOC");
+        System.out.println("2.SISTEMA ELECTRICO");
+        System.out.println("3.CENTRO DE CONTROL FÍSICO");
+        int scarea=scan.nextInt();
+
+        System.out.println("INGRESAR NUMERO DE TIPO DE PERSONAL: ");
+        System.out.println("1. OPERADOR");
+        System.out.println("2. ESPECIALISTA");
+        System.out.println("3. INGENIERO ELECTRICO");
+        System.out.println("4. WAR ROOM TEAM");
+        int scpersonal=scan.nextInt();
+
+
+
+        comprobarID(scarea,scpersonal,area,personal,usuarios,contraseña);
+        saludoBienvenida();
+
+    }
+
+    public static void comprobarID(int scarea, int scpersonal, int[] area, int[] personal, String[][][] usuarios, String[][][] contraseña){
+      int n=0;
+      while (n<3) {
+          Scanner scan = new Scanner(System.in);
+          System.out.println("INGRESE SU USUARIO: ");
+          String scusuario = scan.next();
+
+          System.out.println("INGRESE SU CONTRASEÑA: ");
+          String sccontraseña = scan.next();
+          for (int i = 0; i < usuarios.length; i++) {
+              if (usuarios[scarea - 1][scpersonal - 1][i].equals(scusuario)) {
+                  if (contraseña[scarea - 1][scpersonal - 1][i].equals(sccontraseña)) {
+
+                      return;
+                  }
+              }
+          }
+          n++;
+          if(n<3) {
+              System.out.println();
+              System.out.println("CONTRASEÑA O USUARIO INCORRECTO, TIENE " + (3 - n) + " INTENTOS MAS");
+          }
+          else {
+              System.out.println("TUVO 3 INTENTOS FALLIDOS, EL SISTEMA SE CERRARÁ");
+              System.exit(0);
+          }
+      }
+    }
+
+    public static void saludoBienvenida(){
+        System.out.println();
+        System.out.println("BIENVENIDO AL AREA");
+    }
+
+}
